@@ -21,7 +21,6 @@ class GistConstactsRepository: ContactsRepository {
         guard let url = URL(string: path) else
         {
             throw ContactsRepositoryError.urlFailure
-            
         }
         let request = URLRequest(url: url)
         var result: [Contact] = []

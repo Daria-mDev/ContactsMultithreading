@@ -19,11 +19,4 @@ struct Contact: Codable {
         case email
         case phone
     }
-    
-    init(firstName: String, lastName: String, email: String, phone: String){
-        self.firstName = firstName
-        self.lastName = lastName
-        self.email = email
-        self.phone = phone
-    }
 }

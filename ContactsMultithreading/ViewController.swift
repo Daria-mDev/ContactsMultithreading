@@ -8,28 +8,27 @@
 import UIKit
 
 class ViewController: UIViewController {
-    private var isOperation: Bool = false
+    private var concurrencyOption: ConcurrencyOption = ConcurrencyOption.operationQueue
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func makeGCD(_ sender: Any) {
-        isOperation = false
+        concurrencyOption = ConcurrencyOption.grandCentralDispatch
     }
     
     @IBAction func makeOperation(_ sender: Any) {
-        isOperation = true
+        concurrencyOption = ConcurrencyOption.operationQueue
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         guard let viewController = segue.destination as? TableViewController else {return }
         if segue.identifier == "gcdSegue" {
-            viewController.isOperation = isOperation
+            viewController.concurrencyOption = concurrencyOption
         }
         else if segue.identifier == "operationSegue" {
-            viewController.isOperation = isOperation
+            viewController.concurrencyOption = concurrencyOption
         }
     }
 }

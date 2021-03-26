@@ -11,5 +11,4 @@ enum ContactsRepositoryError: Error {
     case urlFailure
     case jsonDecoderFailure
     case timeout
-    case fetchFailed
 }

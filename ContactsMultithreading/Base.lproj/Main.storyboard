@@ -34,44 +34,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="po5-fD-PiU">
-                                <rect key="frame" x="135" y="445" width="144" height="49"/>
-                                <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="ztb-jB-lbl"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="Operation"/>
-                                <connections>
-                                    <action selector="makeOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CVS-yx-F0y"/>
-                                    <segue destination="zFf-zi-R3I" kind="show" identifier="operationSegue" id="OHB-Om-yge"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adk-db-8hc">
-                                <rect key="frame" x="135" y="375" width="144" height="49"/>
-                                <color key="backgroundColor" systemColor="systemTealColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="AEn-ki-6Rz"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="GCD">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="makeGCD:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HCa-Vf-55x"/>
-                                    <segue destination="zFf-zi-R3I" kind="show" identifier="gcdSegue" id="iwK-k7-q8q"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="j6U-OQ-VNF">
+                                <rect key="frame" x="140" y="404.5" width="134" height="92"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adk-db-8hc">
+                                        <rect key="frame" x="0.0" y="0.0" width="134" height="36"/>
+                                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="GCD">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="makeGCD:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HCa-Vf-55x"/>
+                                            <segue destination="zFf-zi-R3I" kind="show" identifier="gcdSegue" id="iwK-k7-q8q"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="po5-fD-PiU">
+                                        <rect key="frame" x="0.0" y="56" width="134" height="36"/>
+                                        <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="Operation"/>
+                                        <connections>
+                                            <action selector="makeOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CVS-yx-F0y"/>
+                                            <segue destination="zFf-zi-R3I" kind="show" identifier="operationSegue" id="OHB-Om-yge"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="adk-db-8hc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="287" id="HNd-a3-rLI"/>
-                            <constraint firstItem="po5-fD-PiU" firstAttribute="trailing" secondItem="adk-db-8hc" secondAttribute="trailing" id="PMv-35-opz"/>
-                            <constraint firstItem="po5-fD-PiU" firstAttribute="leading" secondItem="adk-db-8hc" secondAttribute="leading" id="W2S-ob-SYM"/>
-                            <constraint firstItem="adk-db-8hc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="135" id="aJW-d0-pBC"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="adk-db-8hc" secondAttribute="trailing" constant="135" id="fgK-HI-11a"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="po5-fD-PiU" secondAttribute="bottom" constant="319" id="jlz-mD-W3w"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="j6U-OQ-VNF" secondAttribute="trailing" constant="140" id="f5f-aC-BL1"/>
+                            <constraint firstItem="j6U-OQ-VNF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="140" id="mvG-PN-Qyw"/>
+                            <constraint firstItem="j6U-OQ-VNF" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ses-7g-sH4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Concurrency" id="v7L-QD-vT9"/>
@@ -253,7 +249,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OHB-Om-yge"/>
+        <segue reference="iwK-k7-q8q"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">
