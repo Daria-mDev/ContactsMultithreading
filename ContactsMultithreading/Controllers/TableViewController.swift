@@ -21,18 +21,11 @@ class TableViewController: UITableViewController {
         let contactsRepo = GistConstactsRepository(path: path)
         if concurrencyOption == ConcurrencyOption.operationQueue {
             navigationItem.title = "Contact - Operation"
-            OperationQueue().addOperation(
-                {
-                    self.loadContactsData(contactsRepo: contactsRepo)
-                }
-            )
+            fetchOperationQueue(contactsRepo: contactsRepo)
         }
         else if concurrencyOption == ConcurrencyOption.grandCentralDispatch {
             navigationItem.title = "Contact - GCD"
-            let utilityQueue = DispatchQueue.global(qos: .utility)
-            utilityQueue.async {
-                self.loadContactsData(contactsRepo: contactsRepo)
-            }
+            fetchGCD(contactsRepo: contactsRepo)
         }
     }
     
@@ -79,8 +72,30 @@ class TableViewController: UITableViewController {
         
     }
     
-    private func setTableViewData() {
+    private func fetchOperationQueue(contactsRepo: ContactsRepository) {
+        let operationQueue = OperationQueue()
+        operationQueue.name = "Contacts Downloader Queue"
+        operationQueue.maxConcurrentOperationCount = 1
         
+        let downloaderOperation = ContactsDownloadOperation(contactsRepository: contactsRepo)
+        downloaderOperation.completionBlock = {
+            if downloaderOperation.isCancelled {
+                return
+            }
+            self.contactList = downloaderOperation.contactList
+            self.setTableViewData()
+        }
+        operationQueue.addOperation(downloaderOperation)
+    }
+    
+    private func fetchGCD(contactsRepo: GistConstactsRepository) {
+        let utilityQueue = DispatchQueue.global(qos: .utility)
+        utilityQueue.async {
+            self.loadContactsData(contactsRepo: contactsRepo)
+        }
+    }
+    
+    private func setTableViewData() {
         DispatchQueue.main.async {
             self.dictionaryContacts = Dictionary(grouping: self.contactList) {
                 contact in  (contact.firstName.first?.uppercased() ?? " ")
@@ -93,7 +108,7 @@ class TableViewController: UITableViewController {
         }
     }
     
-    private func loadContactsData(contactsRepo: GistConstactsRepository) {
+    private func loadContactsData(contactsRepo: ContactsRepository) {
         do {
             self.contactList = try contactsRepo.getContacts()
         }

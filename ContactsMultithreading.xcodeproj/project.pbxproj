@@ -20,6 +20,7 @@
 		CE0D968E260C10E1008C8A9B /* ContactsRepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0D968A260C10E1008C8A9B /* ContactsRepositoryError.swift */; };
 		CE0D968F260C10E1008C8A9B /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0D968B260C10E1008C8A9B /* Contact.swift */; };
 		CE0D9698260C1290008C8A9B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0D9697260C1290008C8A9B /* DetailsViewController.swift */; };
+		CEB8D80A260FC535006D9729 /* ContactsDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB8D809260FC535006D9729 /* ContactsDownloadOperation.swift */; };
 		CEBF7A32260E1C7500201AC6 /* ConcurrencyOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF7A31260E1C7500201AC6 /* ConcurrencyOption.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		CE0D968A260C10E1008C8A9B /* ContactsRepositoryError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsRepositoryError.swift; sourceTree = "<group>"; };
 		CE0D968B260C10E1008C8A9B /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		CE0D9697260C1290008C8A9B /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		CEB8D809260FC535006D9729 /* ContactsDownloadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsDownloadOperation.swift; sourceTree = "<group>"; };
 		CEBF7A31260E1C7500201AC6 /* ConcurrencyOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrencyOption.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,19 +113,17 @@
 		CE0D9647260C0B2D008C8A9B /* ContactsMultithreading */ = {
 			isa = PBXGroup;
 			children = (
-				CE0D968B260C10E1008C8A9B /* Contact.swift */,
-				CE0D9689260C10E1008C8A9B /* ContactsRepository.swift */,
-				CE0D968A260C10E1008C8A9B /* ContactsRepositoryError.swift */,
+				CEB8D810260FCF95006D9729 /* Model */,
+				CEB8D80F260FCEAD006D9729 /* Repository */,
+				CEB8D80E260FCE76006D9729 /* Controllers */,
 				CE0D9648260C0B2D008C8A9B /* AppDelegate.swift */,
 				CE0D9651260C0B2E008C8A9B /* Assets.xcassets */,
 				CE0D9656260C0B2E008C8A9B /* Info.plist */,
 				CE0D9653260C0B2E008C8A9B /* LaunchScreen.storyboard */,
 				CE0D964E260C0B2D008C8A9B /* Main.storyboard */,
 				CE0D964A260C0B2D008C8A9B /* SceneDelegate.swift */,
-				CE0D9684260C104B008C8A9B /* TableViewController.swift */,
-				CE0D964C260C0B2D008C8A9B /* ViewController.swift */,
-				CE0D9697260C1290008C8A9B /* DetailsViewController.swift */,
 				CEBF7A31260E1C7500201AC6 /* ConcurrencyOption.swift */,
+				CEB8D809260FC535006D9729 /* ContactsDownloadOperation.swift */,
 			);
 			path = ContactsMultithreading;
 			sourceTree = "<group>";
@@ -144,6 +144,33 @@
 				CE0D966C260C0B2F008C8A9B /* Info.plist */,
 			);
 			path = ContactsMultithreadingUITests;
+			sourceTree = "<group>";
+		};
+		CEB8D80E260FCE76006D9729 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE0D964C260C0B2D008C8A9B /* ViewController.swift */,
+				CE0D9684260C104B008C8A9B /* TableViewController.swift */,
+				CE0D9697260C1290008C8A9B /* DetailsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CEB8D80F260FCEAD006D9729 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				CE0D9689260C10E1008C8A9B /* ContactsRepository.swift */,
+				CE0D968A260C10E1008C8A9B /* ContactsRepositoryError.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		CEB8D810260FCF95006D9729 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE0D968B260C10E1008C8A9B /* Contact.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,6 +311,7 @@
 				CE0D9649260C0B2D008C8A9B /* AppDelegate.swift in Sources */,
 				CE0D968D260C10E1008C8A9B /* ContactsRepository.swift in Sources */,
 				CE0D964B260C0B2D008C8A9B /* SceneDelegate.swift in Sources */,
+				CEB8D80A260FC535006D9729 /* ContactsDownloadOperation.swift in Sources */,
 				CE0D968F260C10E1008C8A9B /* Contact.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

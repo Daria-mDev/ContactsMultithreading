@@ -10,6 +10,7 @@ import Foundation
 protocol ContactsRepository {
     func getContacts() throws -> [Contact]
 }
+
 class GistConstactsRepository: ContactsRepository {
     private let path: String
     
