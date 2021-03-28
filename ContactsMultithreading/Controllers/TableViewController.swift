@@ -12,9 +12,11 @@ class TableViewController: UITableViewController {
     private var tableSections = [String]()
     private var dictionaryContacts: [String: [Contact]] = [:]
     var concurrencyOption: ConcurrencyOption = ConcurrencyOption.operationQueue
+    private let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addLoadindIndicator()
         
         let path: String = "https://gist.githubusercontent.com/artgoncharov/d257658423edd46a9ead5f721b837b8c/raw/c38ace33a7c871e4ad3b347fc4cd970bb45561a3/contacts_data.json"
         
@@ -72,6 +74,20 @@ class TableViewController: UITableViewController {
         
     }
     
+    private func addLoadindIndicator() {
+        loadingIndicator.style = .large
+        loadingIndicator.color = UIColor.systemGray
+        loadingIndicator.hidesWhenStopped = true
+        
+        loadingIndicator.center.x = self.view.center.x
+        loadingIndicator.center.y = self.view.center.y * 0.8
+        
+        view.addSubview(loadingIndicator)
+        loadingIndicator.startAnimating()
+        
+        self.view.isUserInteractionEnabled = false
+    }
+    
     private func fetchOperationQueue(contactsRepo: ContactsRepository) {
         let operationQueue = OperationQueue()
         operationQueue.name = "Contacts Downloader Queue"
@@ -105,6 +121,9 @@ class TableViewController: UITableViewController {
             }
             self.tableSections.sort()
             self.tableView.reloadData()
+            
+            self.loadingIndicator.stopAnimating()
+            self.view.isUserInteractionEnabled = true
         }
     }
     
